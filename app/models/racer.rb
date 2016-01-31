@@ -8,6 +8,6 @@ class Racer
 
   #Returns db collection holding Racer
   def self.collection
-  	self.mongo_client['racer']
+  	self.mongo_client['racers']
   end
 end
