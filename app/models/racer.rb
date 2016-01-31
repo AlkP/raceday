@@ -14,7 +14,7 @@ class Racer
   end
 
   #Finds all rows in collection which can match based on protoype, sort, skip, limit
-  def self.all(prototype={...}, sort={...}, skip=0, limit=nil)
-
+  def self.all(prototype={}, sort={}, skip=0, limit=nil)
+  	self.collection.find().each{|r| puts r}
   end
 end
