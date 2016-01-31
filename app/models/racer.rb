@@ -13,8 +13,14 @@ class Racer
   	self.mongo_client['racers']
   end
 
-  #Finds all rows in collection which can match based on protoype, sort, skip, limit
-  def self.all(prototype={}, sort={}, skip=0, limit=nil)
-  	self.collection.find().each{|r| puts r}
+  #Finds all rows in collection which can match based on sort, skip, limit
+  def self.all(prototype={}, sort={:number => 1}, skip=0, limit=nil)    
+  	result=collection.find(prototype)        
+  	.sort(sort)        
+  	.skip(skip)      
+  	if !limit.nil?
+  		result = result.limit(limit)
+  	end
+  	result  
   end
 end
