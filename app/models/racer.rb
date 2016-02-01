@@ -24,6 +24,7 @@ class Racer
   	result  
   end
 
+  #Initializes properties of class using keys from racers
   def initialize(params={})
   	@id=params[:_id].nil? ? params[:id] : params[:_id].to_s
   	@number=params[:number].to_i
@@ -33,5 +34,12 @@ class Racer
   	@group=params[:group]
   	@secs=params[:secs].to_i
   end
+
+  #Finds document with specific _id
+  def self.find(id)
+  	result=collection.find(:_id => id).first
+  	return result.nil? ? nil : Racer.new(result)
+  end
+
 
 end
