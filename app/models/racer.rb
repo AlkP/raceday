@@ -41,5 +41,11 @@ class Racer
   	return result.nil? ? nil : Racer.new(result)
   end
 
+  #Saves and inserts data into database
+  def save
+  	result=self.class.collection.insert_one(number:@number, first_name: @first_name, 
+  		last_name: @last_name, gender: @gender, group: @group, secs: @secs)
+  	@id=result.inserted_id.to_s
+  end
 
 end
