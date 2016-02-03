@@ -37,7 +37,7 @@ class Racer
 
   #Finds document with specific _id
   def self.find(id)
-  	result=collection.find(:_id => BSON::ObjectId.from_string(id)).first
+  	result=collection.find(:_id => BSON::ObjectId.from_string(id))
   	return result.nil? ? nil : Racer.new(result)
   end
 
