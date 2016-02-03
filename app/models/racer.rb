@@ -64,4 +64,11 @@ class Racer
   	
   end
 
+  #Deletes an entry
+  def destroy
+  	self.class.collection.find(_id: @id).delete_one
+  
+  end
+
+
 end
