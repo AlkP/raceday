@@ -71,5 +71,9 @@ class Racer
   
   end
 
+  #Checks if object is persisted or not
+  def persisted?
+  	!@id.nil?
+  end
 
 end
