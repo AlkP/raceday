@@ -1,5 +1,6 @@
 class Racer
   include Mongoid::Document
+  include ActiveModel::Model
   attr_accessor :id, :number, :first_name, :last_name, :gender, :group, :secs
 
 
@@ -37,7 +38,7 @@ class Racer
 
   #Finds document with specific _id
   def self.find(id)
-  	result=collection.find(:_id => BSON::ObjectId.from_string(id))
+  	result=collection.find(:_id => BSON::ObjectId.from_string(id.to_s)).first
   	return result.nil? ? nil : Racer.new(result)
   end
 
@@ -66,7 +67,7 @@ class Racer
 
   #Deletes an entry
   def destroy
-  	self.class.collection.find(_id: @id).delete_one
+  	self.class.collection.find(_id: @id).delete_one()
   
   end
 

@@ -530,11 +530,11 @@ yet -- we can implement and test quite a lot with the "rails console" and unit t
     Use the `rails console` to test and explore your changes. 
 
     ```ruby
-    > Racer.find(1001).first_name
+    > Racer.find('5663d512e301d0a256000fa3').first_name
      => "thing" 
-    > Racer.find(1001).destroy
+    > Racer.find('5663d512e301d0a256000fa3').destroy
      => #<Mongo::Operation::Result:57331320 documents=[{"ok"=>1, "n"=>1}]> 
-    > Racer.find(1001)
+    > Racer.find('5663d512e301d0a256000fa3')
      => nil 
     ```     
 

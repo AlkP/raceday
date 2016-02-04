@@ -84,7 +84,7 @@ gem <span class="st">&#39;will_paginate&#39;</span>, <span class="st">&#39;~&gt;
 <li><p>Add the <code>spec/*.rb</code> files provided with the bootstrap fileset to the corresponding <code>spec/</code> directory within your <code>raceday</code> application. These files contain tests that will help determine whether you have completed the assignment.</p></li>
 </ul></li>
 <li><p>Run the <code>bundle</code> command to make sure all gems are available.</p>
-<pre class="shell"><code>$ bundle</code></pre></li>
+<code>shell $ bundle</code></li>
 <li><p>Run the rspec test(s) to receive feedback. <code>rspec</code> must be run from the root directory of your application. There are several test files provided for this assignment. Many of those files are designed to test your code at specific points as you proceed through the technical requirements of this assignment. As such, many tests will fail if executed after additional technical requirements have been completed. Initially, majority of tests will (obviously) fail until you complete the requirements necessary for them to pass.</p>
 <pre class="shell"><code>$ rspec 
 ...
@@ -284,7 +284,7 @@ test:
 <li>Create an instance method in the <code>Racer</code> class called <code>update</code>. This method must:
 <ul>
 <li>accept a hash as an input parameter</li>
-<li>updates the state of the instance variables -- except for <span class="citation">@id</span>. That never should change.</li>
+<li>updates the state of the instance variables -- except for @id. That never should change.</li>
 <li>find the racer associated with the current <code>@id</code> instance variable in the database</li>
 <li>update the racer with the supplied values -- replacing all values</li>
 </ul>
@@ -323,11 +323,11 @@ test:
             ....
 <span class="kw">end</span></code></pre>
 <p>Use the <code>rails console</code> to test and explore your changes.</p>
-<pre class="sourceCode ruby"><code class="sourceCode ruby">&gt; <span class="dt">Racer</span>.find(<span class="dv">1001</span>).first_name
+<pre class="sourceCode ruby"><code class="sourceCode ruby">&gt; <span class="dt">Racer</span>.find(<span class="st">&#39;5663d512e301d0a256000fa3&#39;</span>).first_name
  =&gt; <span class="st">&quot;thing&quot;</span> 
-&gt; <span class="dt">Racer</span>.find(<span class="dv">1001</span>).destroy
+&gt; <span class="dt">Racer</span>.find(<span class="st">&#39;5663d512e301d0a256000fa3&#39;</span>).destroy
  =&gt; <span class="co">#&lt;Mongo::Operation::Result:57331320 documents=[{&quot;ok&quot;=&gt;1, &quot;n&quot;=&gt;1}]&gt; </span>
-&gt; <span class="dt">Racer</span>.find(<span class="dv">1001</span>)
+&gt; <span class="dt">Racer</span>.find(<span class="st">&#39;5663d512e301d0a256000fa3&#39;</span>)
  =&gt; <span class="dv">nil</span> </code></pre>
 <pre class="shell"><code>$ rspec spec/crud_spec.rb -e rq07</code></pre></li>
 </ol>
@@ -336,12 +336,12 @@ test:
 <ol style="list-style-type: decimal">
 <li><p>Add the <code>ActiveModel::Model</code> mixin to the <code>Racer</code> class.</p>
 <pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">class</span> <span class="dt">Racer</span>
-  include <span class="dt">ActiveModel</span>::<span class="dt">Model</span></code></pre>
-<pre class="shell"><code>$ rspec spec/model_spec.rb -e rq01</code></pre></li>
+  <span class="kw">include</span> <span class="dt">ActiveModel</span>::<span class="dt">Model</span></code></pre>
+<code>shell $ rspec spec/model_spec.rb -e rq01</code></li>
 <li>Add an instance method to the <code>Racer</code> class called <code>persisted?</code>. This method must:
 <ul>
 <li>accept no arguments</li>
-<li>return true when <span class="citation">@id</span> is not <code>nil</code>. Remember -- we assigned <span class="citation">@id</span> during save when we obtained the generated primary key.</li>
+<li>return true when @id is not <code>nil</code>. Remember -- we assigned @id during save when we obtained the generated primary key.</li>
 </ul>
 <p>Hint:</p>
 <pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">def</span> persisted?
@@ -466,7 +466,7 @@ to: <span class="er">&lt;</span>%= link_to &#39;Destroy&#39;, racer, method: :de
  =&gt; <span class="dv">30</span>
 &gt; page.total_entries
  =&gt; <span class="dv">1001</span> </code></pre>
-<pre class="shell"><code>$ rspec spec/paginate_spec.rb -e rq01</code></pre></li>
+<code>shell $ rspec spec/paginate_spec.rb -e rq01</code></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Update the <code>racers#index</code> method to use the new <code>Racer.paginate</code> method instead of the scaffold <code>Racer.all</code> method. This method is located in <code>app/controllers/racers_controller.rb</code></p>
@@ -510,8 +510,7 @@ to: <span class="er">&lt;</span>%= link_to &#39;Destroy&#39;, racer, method: :de
 <pre class="shell"><code>$ rspec 
 ...
 (N) examples, 0 failures</code></pre>
-<p>You can run as many specific tests you wish be adding <code>-e rq## -e rq##</code></p>
-<pre class="shell"><code>$ rspec (spec path) -e rq01 -e rq02</code></pre>
+<p>You can run as many specific tests you wish be adding <code>-e rq## -e rq##</code> <code>shell $ rspec (spec path) -e rq01 -e rq02</code></p>
 <h2 id="submission">Submission</h2>
 <p>Submit an .zip archive (other archive forms not currently supported) with your solution root directory as the top-level (e.g., your Gemfile and sibling files must be in the root of the archive and <em>not</em> in a sub-folder. The grader will replace the spec files with fresh copies and will perform a test with different query terms.</p>
 <pre class="text"><code>|-- app
