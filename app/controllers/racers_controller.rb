@@ -62,6 +62,23 @@ class RacersController < ApplicationController
     end
   end
 
+  #Pagination
+  def self.pagination(params)
+    page=(params[:page] || 1).to_i
+    limit=(params[:per_pate] || 30).to_i
+    skip=(page-1)*limit
+
+    racers=[]
+
+      racers << Racer.new(doc)
+
+
+
+    WillPaginate::Collection.create(page, limit, total) do |pager|
+      pager.replace(racers)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_racer
