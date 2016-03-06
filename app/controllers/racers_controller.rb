@@ -63,7 +63,7 @@ class RacersController < ApplicationController
   end
 
   #Pagination
-  def self.pagination(params)
+  def self.paginate(params)
     page=(params[:page] || 1).to_i
     limit=(params[:per_pate] || 30).to_i
     skip=(page-1)*limit
