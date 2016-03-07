@@ -38,7 +38,9 @@ class Racer
 
   #Finds document with specific _id
   def self.find(id)
-  	result=collection.find(:_id => BSON::ObjectId.from_string(id.to_s)).first
+  	result=collection.find(:_id => BSON::ObjectId.from_string(id))
+  					 .projection({_id:true, number:true, first_name:true, last_name:true, gender:true, group:true, secs:true})
+  					 .first
   	return result.nil? ? nil : Racer.new(result)
   end
 
@@ -67,7 +69,7 @@ class Racer
 
   #Deletes an entry
   def destroy
-  	self.class.collection.find(_id: @id).delete_one()
+  	self.class.collection.find(_id:BSON::ObjectId.from_string(@id)).delete_one()
   
   end
 
