@@ -89,14 +89,16 @@ class Racer
   #Pagination
   def self.paginate(params)
     page=(params[:page] || 1).to_i
-    limit=(params[:per_pate] || 30).to_i
+    limit=(params[:per_page] || 30).to_i
     skip=(page-1)*limit
+    sort = params[:first_name] || {}
 
     racers=[]
-
+    all({}, sort, skip, limit).each do |doc|
       racers << Racer.new(doc)
+    end
 
-
+    total = all().count
 
     WillPaginate::Collection.create(page, limit, total) do |pager|
       pager.replace(racers)
